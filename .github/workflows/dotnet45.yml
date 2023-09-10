@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: windows-2019
     steps:
-    - uses: cschleiden/replace-tokens@v1
+    - uses: cschleiden/replace-tokens@v1.1
       with:
         tokenPrefix: '___'
         tokenSuffix: '___'
-        files: '["**/*.config"]'
+        files: '["IMS-Project/Web.config"]'
       env:
         KahreedoEntities: ${{secrets.KahreedoEntities}}
         IMS_Entities: ${{secrets.IMS_Entities}}
