@@ -14,10 +14,8 @@ jobs:
         tokenSuffix: '___'
         files: '["**/*.config"]'
       env:
-        "DBUSER": ${{secrets.DB_USER}}
-        "DBPASSWORD": ${{secrets.DB_PASSWORD}}
-        "DBSERVER": ${{secrets.DB_SERVER}}
-        "DBDATABASE":  ${{secrets.DB_DATABASE}}
+        KahreedoEntities: ${{secrets.KahreedoEntities}}
+        IMS_Entities: ${{secrets.IMS_Entities}}
     
     - uses: actions/checkout@v2
 
