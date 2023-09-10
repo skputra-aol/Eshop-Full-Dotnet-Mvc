@@ -11,9 +11,9 @@ jobs:
     
     - uses: actions/checkout@v2
 
-    - name: replace
-      uses: Nambers/ReplaceStringInFile@v1
-
+    - name: replace string in file
+      uses: Nambers/ReplaceStringInFile@v1.3
+            
       with:
         path: ${{ github.workspace }}/IMS-Project/Web.config
         oldString: IMS_Entities
@@ -21,8 +21,9 @@ jobs:
         newString: kucing1
         showFileContent: true
         
-    - name: replace2       
-      uses: Nambers/ReplaceStringInFile@v1
+
+    - name: replace string in file2
+      uses: Nambers/ReplaceStringInFile@v1.3
       with:
         path: ${{ github.workspace }}/Web.config
         oldString: KahreedoEntities
