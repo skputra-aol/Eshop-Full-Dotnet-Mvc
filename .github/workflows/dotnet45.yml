@@ -12,7 +12,7 @@ jobs:
       with:
         tokenPrefix: '___'
         tokenSuffix: '___'
-        files: '["IMS-Project/Web.config"]'
+        files: '["./IMS-Project/Web.config"]'
       env:
         KahreedoEntities: ${{secrets.KahreedoEntities}}
         IMS_Entities: ${{secrets.IMS_Entities}}
