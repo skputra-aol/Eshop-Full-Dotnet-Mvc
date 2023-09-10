@@ -18,18 +18,17 @@ jobs:
         path: ${{ github.workspace }}/IMS-Project/Web.config
         oldString: IMS_Entities
         oldStringWin: IMS_Entities
-        newString: kucing1
+        newString: ${{ secrets.DB_USER }}
         showFileContent: true
-        
 
     - name: replace string in file2
       uses: Nambers/ReplaceStringInFile@v1.3
       with:
-        path: ${{ github.workspace }}/Web.config
+        path: ${{ github.workspace }}/IMS-Project/Web.config
         oldString: KahreedoEntities
-        oldStringWin: KahreedoEntities
-        newString: kucing2
+        newString: ${{ secrets.DB_SERVER }}
         showFileContent: true
+        
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
