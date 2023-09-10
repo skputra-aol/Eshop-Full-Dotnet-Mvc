@@ -16,7 +16,7 @@ jobs:
       uses: Nambers/ReplaceStringInFile@v1.3
             
       with:
-        path: ${{ CONFIGFILE }}
+        path: "$CONFIGFILE"
         oldString: ___DBUSER___
         newString: ${{ secrets.DB_USER }}
 
