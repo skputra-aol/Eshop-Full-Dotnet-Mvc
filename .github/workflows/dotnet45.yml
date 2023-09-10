@@ -10,10 +10,14 @@ jobs:
     steps:
     - uses: flcdrg/replace-multiple-action@v1
       with:
-        files: './IMS-Project/Web.config'
+        files: '**/*.config'
         find: '[{ "find": "___KahreedoEntities___", "replace": "[${{secrets.KahreedoEntities}}]"}, { "find": "___IMS_Entities___", "replace": "[${{secrets.IMS_Entities}}]"}]'
-        prefix: '(^|\\s+|\\()'
-        suffix: '($|\\s+|\\))'
+
+
+    - uses: flcdrg/replace-multiple-action@v1
+      with:
+        files: 'Web.config'
+        find: '[{ "find": "___KahreedoEntities___", "replace": "[${{secrets.KahreedoEntities}}]"}, { "find": "___IMS_Entities___", "replace": "[${{secrets.IMS_Entities}}]"}]'
 
     
     - uses: actions/checkout@v2
