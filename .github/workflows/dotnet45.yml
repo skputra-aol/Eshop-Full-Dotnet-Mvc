@@ -36,7 +36,7 @@ jobs:
     - name: replace Config database
       uses: Nambers/ReplaceStringInFile@v1.3
       with:
-        path: ${{ env.CONFIG_ENV_FILE }}
+        path: ${{ vars.CONFIG_ENV_FILE }}
         oldString: ___DBDATABASE___
         newString: ${{ secrets.DB_DATABASE }}
         
