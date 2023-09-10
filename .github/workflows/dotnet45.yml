@@ -35,10 +35,7 @@ jobs:
 
     - name: Replace credentials
       run: |
-        sed -i 's/__DB_USER__/${{ secrets.DB_USER }}/g' Web.config +
-        sed -i 's/__DB-PASSWORD__/${{ secrets.DB_PASSWORD }}/g' Web.config +
-        sed -i 's/__DB_SERVER__/${{ secrets.DB_SERVER }}/g' Web.config +
-        sed -i 's/__DB_DATABASE/${{ secrets.DB_DATABASE }}/g' Web.config
+        sed -i 's/__DBUSER__/${{ secrets.DB_USER }}/g' Web.config 
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
