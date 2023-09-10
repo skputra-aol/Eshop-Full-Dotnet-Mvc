@@ -3,7 +3,8 @@ name: Dotnet Mvc 4.5 Build
 on:
   push:
     branches: master
-
+env:
+  CONFIGFILE: ${{ github.workspace }}/IMS-Project/Web.config
 jobs:
   build:
     runs-on: windows-2019
@@ -11,23 +12,34 @@ jobs:
     
     - uses: actions/checkout@v2
 
-    - name: replace string in file
+    - name: replace Config user
       uses: Nambers/ReplaceStringInFile@v1.3
             
       with:
-        path: ${{ github.workspace }}/IMS-Project/Web.config
-        oldString: IMS_Entities
-        oldStringWin: IMS_Entities
+        path: $CONFIGFILE
+        oldString: ___DBUSER___
         newString: ${{ secrets.DB_USER }}
-        showFileContent: true
 
-    - name: replace string in file2
+    - name: replace Config password
       uses: Nambers/ReplaceStringInFile@v1.3
       with:
-        path: ${{ github.workspace }}/IMS-Project/Web.config
-        oldString: KahreedoEntities
+        path: $CONFIGFILE
+        oldString: ___DBPASSWORD___
+        newString: ${{ secrets.DB_PASSWORD }}
+
+    - name: replace Config server
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with:
+        path: $CONFIGFILE
+        oldString: ___DBSERVER___
         newString: ${{ secrets.DB_SERVER }}
-        showFileContent: true
+
+    - name: replace Config database
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with:
+        path: $CONFIGFILE
+        oldString: ___DBDATABASE___
+        newString: ${{ secrets.DB_DATABASE }}
         
 
     - name: Setup MSBuild
