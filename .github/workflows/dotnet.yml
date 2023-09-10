@@ -1,4 +1,4 @@
-name: Dotnet Mvc 4.5 Build
+name: Dotnet Mvc Build
 
 on:
   push:
@@ -11,6 +11,35 @@ jobs:
     
     - uses: actions/checkout@v2
 
+    - name: replace Config user
+      uses: Nambers/ReplaceStringInFile@v1.3
+            
+      with:
+        path: Kahreedo/Web.config
+        oldString: ___DBUSER___
+        newString: ${{ secrets.DB_USER }}
+
+    - name: replace Config password
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with:
+        path: Kahreedo/Web.config
+        oldString: ___DBPASSWORD___
+        newString: ${{ secrets.DB_PASSWORD }}
+
+    - name: replace Config server
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with:
+        path: Kahreedo/Web.config
+        oldString: ___DBSERVER___
+        newString: ${{ secrets.DB_SERVER }}
+
+    - name: replace Config database
+      uses: Nambers/ReplaceStringInFile@v1.3
+      with:
+        path: Kahreedo/Web.config
+        oldString: ___DBDATABASE___
+        newString: ${{ secrets.DB_DATABASE }}
+        
 
 
     - name: Setup MSBuild
