@@ -8,17 +8,6 @@ jobs:
   build:
     runs-on: windows-2019
     steps:
-    - uses: flcdrg/replace-multiple-action@v1
-      with:
-        files: '**/*.config'
-        find: '[{ "find": "___KahreedoEntities___", "replace": "[${{secrets.KahreedoEntities}}]"}, { "find": "___IMS_Entities___", "replace": "[${{secrets.IMS_Entities}}]"}]'
-
-
-    - uses: flcdrg/replace-multiple-action@v1
-      with:
-        files: 'Web.config'
-        find: '[{ "find": "___KahreedoEntities___", "replace": "[${{secrets.KahreedoEntities}}]"}, { "find": "___IMS_Entities___", "replace": "[${{secrets.IMS_Entities}}]"}]'
-
     
     - uses: actions/checkout@v2
 
@@ -43,7 +32,13 @@ jobs:
     - name: Build Solution
       run: |
         msbuild.exe IMS-Project.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
-        
+
+    - name: Replace credentials
+      run: |
+        sed -i 's/__DB_USER__/${{ secrets.DB_USER }}/g' Web.config +
+        sed -i 's/__DB-PASSWORD__/${{ secrets.DB_PASSWORD }}/g' Web.config +
+        sed -i 's/__DB_SERVER__/${{ secrets.DB_SERVER }}/g' Web.config +
+        sed -i 's/__DB_DATABASE/${{ secrets.DB_DATABASE }}/g' Web.config
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
