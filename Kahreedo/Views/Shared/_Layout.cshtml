@@ -1,16 +1,37 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Khareedo.pk | @ViewBag.Title</title>
 
-    @Styles.Render("~/Content/css")
+    
+<link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css">         
+<link href="~/Content/css/jquery.smartmenus.bootstrap.css" rel="stylesheet" type="text/css">     
+<link href="~/Content/css/slick.css" rel="stylesheet" type="text/css">
+<link href="~/Content/css/font-awesome.css" rel="stylesheet" type="text/css">       
+<link href="~/Content/css/nouislider.css" rel="stylesheet" type="text/css">                      
+<link href="~/Content/css/style.css" rel="stylesheet" type="text/css">
+<link href="~/Content/css/jquery.simpleLens.css" rel="stylesheet" type="text/css">  
+<link href="~/Content/css/sequence-theme.modern-slide-in.css" rel="stylesheet" type="text/css">  
+
+<link href="~/Content/css/theme-color/bridge-theme.css" rel="stylesheet" type="text/css">    
+<link href="~/Content/css/theme-color/green-theme.css" rel="stylesheet" type="text/css">      
+<link href="~/Content/css/theme-color/pink-theme.css" rel="stylesheet" type="text/css">    
+<link href="~/Content/css/theme-color/yellow-theme.css" rel="stylesheet" type="text/css">
+<link href="~/Content/css/theme-color/dark-red-theme.css" rel="stylesheet" type="text/css">  
+<link href="~/Content/css/theme-color/lite-blue-theme.css" rel="stylesheet" type="text/css">  
+<link href="~/Content/css/theme-color/purple-theme.css" rel="stylesheet" type="text/css">
+<link href="~/Content/css/theme-color/default-theme.css" rel="stylesheet" type="text/css">   
+<link href="~/Content/css/theme-color/orange-theme.css" rel="stylesheet" type="text/css">     
+<link href="~/Content/css/theme-color/red-theme.css" rel="stylesheet" type="text/css">
+    
     
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.min.jsx"></script>
 
     <!-- Ad intellisence for searching products-->
     
@@ -30,11 +51,7 @@
 </head>
 <body>
     <!-- wpf loader Two -->
-    <div id="wpf-loader-two">
-        <div class="wpf-loader-two-inner">
-            <span>Loading</span>
-        </div>
-    </div>
+
     <!-- / wpf loader Two -->
     <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
@@ -330,7 +347,7 @@
     </footer>
     <!-- / footer -->
    
-    @Scripts.Render("~/Content/js")
+
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
@@ -361,7 +378,19 @@
         });
     </script>
 
-   
+<script src="~/Content/js/bootstrap.js"></script>                    
+<script src="~/Content/js/jquery.smartmenus.js"></script>
+<script src="~/Content/js/custom.js"></script>                       
+<script src="~/Content/js/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Content/js/jquery.min.js"></script>                   
+<script src="~/Content/js/nouislider.js"></script>
+<script src="~/Content/js/jquery.simpleGallery.js"></script>         
+<script src="~/Content/js/sequence.js"></script>
+<script src="~/Content/js/jquery.simpleLens.js"></script>            
+<script src="~/Content/js/sequence-theme.modern-slide-in.js"></script>
+<script src="~/Content/js/jquery.smartmenus.bootstrap.js"></script>  
+<script src="~/Content/js/slick.js"></script>
+
 
 </body>
 </html>
