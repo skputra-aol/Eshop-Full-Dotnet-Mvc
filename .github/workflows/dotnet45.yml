@@ -11,7 +11,7 @@ jobs:
     - uses: flcdrg/replace-multiple-action@v1
       with:
         files: './*.config'
-        find: '[{ "find": "___KahreedoEntities___", "replace": ${{secrets.KahreedoEntities}} }, { "find": "___IMS_Entities___, "replace": ${{secrets.IMS_Entities}} }]'
+        find: '[{ "find": "___KahreedoEntities___", "replace": "[${{secrets.KahreedoEntities}}]"}, { "find": "___IMS_Entities___", "replace": "[${{secrets.IMS_Entities}}]"}]'
         prefix: '(^|\\s+|\\()'
         suffix: '($|\\s+|\\))'
 
