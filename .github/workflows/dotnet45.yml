@@ -1,0 +1,73 @@
+name: Dotnet Mvc 4.5 Build
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+    - uses: cschleiden/replace-tokens@v1
+      with:
+              tokenPrefix: '___'
+              tokenSuffix: '___'
+              files: '["**/*.config"]'
+      env:
+              DBUSER: ${{secrets.DB_USER}}
+              DBPASSWORD: ${{secrets.DB_PASSWORD}}
+              DBSERVER: ${{secrets.DB_SERVER}}
+              DBDATABASE:  ${{secrets.DB_DATABASE}}
+    
+    - uses: actions/checkout@v2
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+  
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+
+    - name: Create Build Directory
+      run: mkdir _build
+      
+    - name: Restore Packages
+      run: nuget restore IMS-Project.sln
+
+    - name: Build Solution
+      run: |
+        msbuild.exe IMS-Project.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: EZRepBundle
+        path: "./_build"        
+
+    - name: Sync Files001
+      uses: SamKirkland/FTP-Deploy-Action@4.1.0
+      with:
+        server: putracode2.somee.com
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./_build/
+        server-dir: ./www.putracode2.somee.com/
+        dangerous-clean-slate: true
+
+    #- name: Login to Azure
+     # uses: azure/login@v1
+      #with:
+       # creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    #- name: Publish Artifacts to Azure
+     # uses: Azure/webapps-deploy@v2
+      #with:
+       # app-name: ezrep
+        #package: "./_build"
+        #slot-name: production        
+
