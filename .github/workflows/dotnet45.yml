@@ -12,7 +12,7 @@ jobs:
       with:
               tokenPrefix: '___'
               tokenSuffix: '___'
-              files: '["**/*.config"]'
+              files: '["*.config"]'
       env:
               DBUSER: ${{secrets.DB_USER}}
               DBPASSWORD: ${{secrets.DB_PASSWORD}}
