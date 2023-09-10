@@ -10,14 +10,14 @@ jobs:
     steps:
     - uses: cschleiden/replace-tokens@v1
       with:
-              tokenPrefix: '___'
-              tokenSuffix: '___'
-              files: '["*.config"]'
+        tokenPrefix: '___'
+        tokenSuffix: '___'
+        files: '["**/*.config"]'
       env:
-              DBUSER: ${{secrets.DB_USER}}
-              DBPASSWORD: ${{secrets.DB_PASSWORD}}
-              DBSERVER: ${{secrets.DB_SERVER}}
-              DBDATABASE:  ${{secrets.DB_DATABASE}}
+        "DBUSER": ${{secrets.DB_USER}}
+        "DBPASSWORD": ${{secrets.DB_PASSWORD}}
+        "DBSERVER": ${{secrets.DB_SERVER}}
+        "DBDATABASE":  ${{secrets.DB_DATABASE}}
     
     - uses: actions/checkout@v2
 
