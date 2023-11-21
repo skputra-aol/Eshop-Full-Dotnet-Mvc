@@ -70,7 +70,7 @@ jobs:
         name: EZRepBundle
         path: "./_build"        
 
-    - name: Sync Files001
+    - name: Sync Files0001
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
         server: putracode2.somee.com
