@@ -70,10 +70,10 @@ jobs:
         name: EZRepBundle
         path: "./_build"        
 
-    - name: Sync Files0001
+    - name: Sync Files00001
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
-        server: putracode2.somee.com
+        server: putracode.somee.com
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./_build/
